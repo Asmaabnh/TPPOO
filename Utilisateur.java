@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import javafx.scene.layout  ;
 
 public class Utilisateur {
     private String pseudo ; 
@@ -49,7 +48,7 @@ public Utilisateur (String pseudo,int NbTacheMin  ){
 
 public void completeTask(Tache task) {
     CptTache++;
-    checkBadges(task);
+    checkBadges();
 }
 
 
