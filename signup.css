@@ -1,0 +1,17 @@
+#back{
+    -fx-background-color: #ffffff;
+
+}
+#but {-fx-background-color: #ffffff;
+    -fx-font-family: "Poppins";
+    -fx-font-weight: medium;}
+    /* css ghir l wahd fih id*/
+.button {
+    -fx-background-color: linear-gradient(to right, #270079, #80D7DF);
+    -fx-text-fill:  "white";
+    -fx-font-family: "Poppins";
+    -fx-font-weight: medium;
+    -fx-background-radius: 30px;
+    -fx-font-size: 12px;
+        
+}
