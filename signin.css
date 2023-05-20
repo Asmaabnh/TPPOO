@@ -1,0 +1,9 @@
+.button {
+    -fx-background-color: #270079;
+    -fx-text-fill:  "white";
+    -fx-font-family: "Poppins";
+    -fx-font-weight: medium;
+    -fx-background-radius: 30px;
+    -fx-font-size: 13px;
+        
+}
