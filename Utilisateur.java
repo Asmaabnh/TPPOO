@@ -48,7 +48,7 @@ public Utilisateur (String pseudo,int NbTacheMin  ){
 
 public void completeTask(Tache task) {
     CptTache++;
-    checkBadges();
+    checkBadges(); //EN ENTREE TASK OU NN 
 }
 
 
