@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Utilisateur",
+            "request": "launch",
+            "mainClass": "Utilisateur",
+            "projectName": "TPPOO_4d0797c0"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -17,7 +24,6 @@
             "mainClass": "App",
             "projectName": "TPPOO_4d0797c0",
             "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
-
         },
         {
             "type": "java",
@@ -33,7 +39,6 @@
             "mainClass": "testcalendrierchatgpt",
             "projectName": "TPPOO_4d0797c0",
             "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
-
         }
     ]
 }
