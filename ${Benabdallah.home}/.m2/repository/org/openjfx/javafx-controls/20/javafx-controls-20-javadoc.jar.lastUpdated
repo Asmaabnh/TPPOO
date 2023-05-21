@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun May 21 23:29:22 CEST 2023
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1684704562558
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.openjfx\:javafx-controls\:jar\:javadoc\:20 from/to central (https\://repo.maven.apache.org/maven2)\: repo.maven.apache.org

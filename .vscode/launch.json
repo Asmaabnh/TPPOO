@@ -1,0 +1,39 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "TPPOO_4d0797c0",
+            "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
+
+        },
+        {
+            "type": "java",
+            "name": "App1",
+            "request": "launch",
+            "mainClass": "App1",
+            "projectName": "TPPOO_4d0797c0"
+        },
+        {
+            "type": "java",
+            "name": "testcalendrierchatgpt",
+            "request": "launch",
+            "mainClass": "testcalendrierchatgpt",
+            "projectName": "TPPOO_4d0797c0",
+            "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
+
+        }
+    ]
+}
