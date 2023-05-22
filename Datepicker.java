@@ -4,7 +4,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class TwoClickDatePickerExample extends Application {
+public class Datepicker extends Application {
 
     private DatePicker datePicker;
     private boolean isFirstClick = true;

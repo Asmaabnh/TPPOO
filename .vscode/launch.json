@@ -6,6 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Datepicker",
+            "request": "launch",
+            "mainClass": "Datepicker",
+            "projectName": "TPPOO_4d0797c0",
+            "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
+
+        },
+       
+        {
+            "type": "java",
             "name": "Utilisateur",
             "request": "launch",
             "mainClass": "Utilisateur",
