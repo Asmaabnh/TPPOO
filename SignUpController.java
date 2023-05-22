@@ -10,8 +10,14 @@ public class signUpController {
     private Button signUpbutton;
 
     @FXML
-    void signUp(ActionEvent event) {
-
+    void signUp(ActionEvent event) { //INSCRIRE 
+        //SERIALISATION 
+        //INSCIRE() 
+        Parent root = FXMLLoader.load(getClass().getResource("PERIODE.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
