@@ -1,11 +1,18 @@
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+
 public class Authgestion {
 
 
     private static final String FichierUsers = "utilisateurs.dat";
     private static Map<String, Utilisateur> Users = new HashMap<>();
-
-
-
 
     public static void Inscrire(Utilisateur utilisateur) {
         chargerUtilisateurs();
