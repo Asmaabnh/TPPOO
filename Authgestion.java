@@ -5,7 +5,7 @@ public class Authgestion {
     private static Map<String, Utilisateur> Users = new HashMap<>();
 
 
-    
+
 
     public static void Inscrire(Utilisateur utilisateur) {
         chargerUtilisateurs();
@@ -31,7 +31,8 @@ public class Authgestion {
     private static void sauvegarderUtilisateurs() {
         try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(FichierUsers))) {
             objectOut.writeObject(Users);
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.err.println("Erreur lors de la sauvegarde des utilisateurs : " + e.getMessage());
         }
     }
