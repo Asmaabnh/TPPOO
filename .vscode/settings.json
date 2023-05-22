@@ -10,7 +10,7 @@
         "C:\\javafx-sdk-20\\lib\\javafx.web.jar",
         "C:\\javafx-sdk-20\\lib\\javafx-swt.jar"
         
-    ],
-    "java.home": ["C:\\Users\\Benabdallah\\AppData\\Local\\SceneBuilder\\SceneBuilder.exe",]
+    ]
+   // "java.home": ["C:\\Users\\Benabdallah\\AppData\\Local\\SceneBuilder\\SceneBuilder.exe",]
 
 }
