@@ -14,6 +14,7 @@ public class Utilisateur implements Serializable {
 
 
     private static final String FichierUsers = "utilisateurs.dat";
+
     private static Map<String, Utilisateur> Users = new HashMap<>();
 
     public Utilisateur(String pseudo, int nbTacheMin) {
@@ -58,6 +59,8 @@ public class Utilisateur implements Serializable {
         }
     }
 
+
+    
     public static void Inscrire(Utilisateur utilisateur) {
         chargerUtilisateurs();
         if (!pseudoExiste(utilisateur.getPseudo())) {
@@ -67,6 +70,11 @@ public class Utilisateur implements Serializable {
             JOptionPane.showMessageDialog(null, "Le pseudo est déjà utilisé ! Choisissez un autre.");
         }
     }
+
+
+
+
+
 
     public static boolean Connecter(String pseudo) {
         chargerUtilisateurs();

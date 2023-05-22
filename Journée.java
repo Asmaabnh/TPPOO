@@ -10,7 +10,7 @@ public class Journée {
      private LocalDate date;   
    
    
-     public List<Creneau> specifierCreneauxLibres(LocalTime heureDebut, LocalTime heureFin , List<Creneau> creneauxLibres ) { 
+     public List<Creneau> specifierCreneauxLibres(LocalTime heureDebut, LocalTime heureFin  ) { 
     
         
      
