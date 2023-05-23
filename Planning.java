@@ -1,7 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< Updated upstream
 
 public class Planning {
     private List<Journee> journees;
@@ -14,11 +13,8 @@ public class Planning {
     public static  void repporter(){} 
     public static  void manuelle(){} 
     public static  void automatique(){} 
-=======
 
-public class Planning {
-    private List<Journee> journees;
->>>>>>> Stashed changes
+   
 
     public Planning() {
         journees = new ArrayList<>();
@@ -33,22 +29,6 @@ public class Planning {
         journees.removeIf(journee -> journee.getDate().equals(date));
     }
 
-<<<<<<< Updated upstream
-    public Planning() {
-        journees = new ArrayList<>();
-    }
-
-    public void addDate(LocalDate date) {
-        Journee journee = new Journee(date);
-        journees.add(journee);
-    }
-
-    public void removeDate(LocalDate date) {
-        journees.removeIf(journee -> journee.getDate().equals(date));
-    }
-
-=======
->>>>>>> Stashed changes
     public List<Journee> getJournees() {
         return journees;
     }
@@ -66,7 +46,6 @@ public class Planning {
         return false;
     }
 
-<<<<<<< Updated upstream
     void afficherPlanning() {
         System.out.println("Planning :");
     
@@ -85,9 +64,6 @@ public class Planning {
         }
     }
     
-=======
-    // Dans la classe Planning
->>>>>>> Stashed changes
 
 @Override
 public String toString() {
