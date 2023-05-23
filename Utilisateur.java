@@ -1,68 +1,64 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
-public class Utilisateur {
-    private String pseudo ; 
-    //int id  ; 
-    private Badge badge ;
-    private int CptTache;
-    private int NbTacheMin;
+public class Utilisateur implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private String pseudo;
+    private Planning planning;
+    private Badge badge;
+    private int cptTache;
+    private int nbTacheMin;
 
-      
 
 
-public Utilisateur (String pseudo,int NbTacheMin  ){
+    private static final String FichierUsers = "utilisateurs.dat";
 
-    this.pseudo= pseudo ; 
-    this.CptTache = 0;
-    this.badge = Badge.NONE;
-    this.NbTacheMin = NbTacheMin;
+    private static Map<String, Utilisateur> Users = new HashMap<>();
 
-}
-
-    public void planifier () {}
-
-    public void authentifier (Utilisateur user ) //
-    {
-
+    public Utilisateur(String pseudo, int nbTacheMin) {
+        this.pseudo = pseudo;
+        this.nbTacheMin = nbTacheMin;
+        this.cptTache = 0;
+        this.badge = Badge.NONE;
     }
 
- public String  fixerperiode()  //A MODIFIER 
- //DONNE DATEDEBUT ET DATEFIN
- {
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.print ( "Veuillez fixer une période pour laquelle vous souhaitez planifier tes taches [exemple : 23mars au 9 AVRIL] : ")  ;
-
-    String periode = scanner.nextLine();
-
-
-    scanner.close();
-    return periode; 
-
- }
- 
-
- 
-
-// METHODE FIXER NOMBRE TACHES 
-
-public void completeTask(Tache task) {
-    CptTache++;
-    checkBadges(); //EN ENTREE TASK OU NN 
-}
-
-
-private void checkBadges() {
-    if (CptTache >= NbTacheMin && badge == Badge.NONE) {
-        badge = Badge.GOOD;
-        System.out.println("Félicitations ! Vous avez obtenu le badge GOOD.");
-    } else if (badge == Badge.GOOD && CptTache >= NbTacheMin * 2) {
-        badge = Badge.VERYGOOD;
-        System.out.println("Félicitations ! Vous avez obtenu le badge VERYGOOD.");
-    } else if (badge == Badge.VERYGOOD && CptTache >= NbTacheMin * 3) {
-        badge = Badge.EXCELLENT;
-        System.out.println("Félicitations ! Vous avez obtenu le badge EXCELLENT.");
+    public String getPseudo() {
+        return pseudo;
     }
-}
 
+    /*public void setPlanning(Planning planning) {
+        this.planning = planning;
+    }*/
+
+    public void planifier() {
+        // Méthode de planification
+    }
+
+    public String fixerPeriode() {
+        // Méthode pour fixer une période
+        return null;
+    }
+
+    public void completeTask(Tache task) {
+        cptTache++;
+        checkBadges();
+    }
+
+    private void checkBadges() {
+        if (cptTache >= nbTacheMin && badge == Badge.NONE) {
+            badge = Badge.GOOD;
+            System.out.println("Félicitations ! Vous avez obtenu le badge GOOD.");
+        } else if (badge == Badge.GOOD && cptTache >= nbTacheMin * 2) {
+            badge = Badge.VERYGOOD;
+            System.out.println("Félicitations ! Vous avez obtenu le badge VERYGOOD.");
+        } else if (badge == Badge.VERYGOOD && cptTache >= nbTacheMin * 3) {
+            badge = Badge.EXCELLENT;
+            System.out.println("Félicitations ! Vous avez obtenu le badge EXCELLENT.");
+        }
+    }
+
+
+    
 }

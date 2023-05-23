@@ -5,8 +5,10 @@ public abstract class  Tache {
     private String nom;
     private LocalTime duree;// à vérifier si un string 
     private LocalTime deadline;
+    private String etat; 
+    private String priorite ; 
 
-    //etat
+   
     //priorité
 //private catégorie 
 

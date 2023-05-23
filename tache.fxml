@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="356.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Pane prefHeight="64.0" prefWidth="356.0" style="-fx-background-color: BF5B46;">
+         <children>
+            <Text fill="#fffbfb" layoutX="60.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une tâche : " wrappingWidth="235.375">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextArea fx:id="nomtache" layoutX="79.0" layoutY="87.0" prefHeight="14.0" prefWidth="149.0" promptText="Nom" />
+      <Button fx:id="confirmer" layoutX="116.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" style="-fx-background-image: BF5B46;" text="Confirmer" />
+      <DatePicker fx:id="deadline" layoutX="79.0" layoutY="229.0" prefHeight="23.0" prefWidth="149.0" promptText="Deadline" />
+      <ComboBox fx:id="type" editable="true" layoutX="79.0" layoutY="134.0" prefWidth="150.0" promptText="Type" />
+      <ComboBox fx:id="priorite" editable="true" layoutX="79.0" layoutY="274.0" prefWidth="150.0" promptText="Priorité" />
+      <TextArea fx:id="duree" layoutX="79.0" layoutY="174.0" prefHeight="32.0" prefWidth="150.0" promptText="Durée" />
+   </children>
+</AnchorPane>

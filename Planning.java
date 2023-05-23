@@ -5,6 +5,18 @@ import java.util.List;
 public class Planning {
     private List<Journee> journees;
 
+
+
+
+
+    public static  void replanifier(){} //static?????
+    public static  void repporter(){} 
+    public static  void manuelle(){} 
+    public static  void automatique(){} 
+
+
+
+
     public Planning() {
         journees = new ArrayList<>();
     }
