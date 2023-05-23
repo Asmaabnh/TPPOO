@@ -6,6 +6,47 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Calendrier",
+            "request": "launch",
+            "mainClass": "Calendrier",
+            "projectName": "TPPOO_315340d7",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+     
+        },
+        {
+            "type": "java",
+            "name": "CustomDatePickerApp",
+            "request": "launch",
+            "mainClass": "CustomDatePickerApp",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "DatePickerApp",
+            "request": "launch",
+            "mainClass": "DatePickerApp",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "Calendrier",
+            "request": "launch",
+            "mainClass": "Calendrier",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+            "name": "testcalendrierchatgpt",
+            "request": "launch",
+            "mainClass": "testcalendrierchatgpt",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,15 +57,15 @@
             "request": "launch",
             "mainClass": "App",
             "projectName": "TPPOO_4d0797c0",
-            "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
-
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
             "name": "App1",
             "request": "launch",
             "mainClass": "App1",
-            "projectName": "TPPOO_4d0797c0"
+            "projectName": "TPPOO_4d0797c0",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -32,8 +73,7 @@
             "request": "launch",
             "mainClass": "testcalendrierchatgpt",
             "projectName": "TPPOO_4d0797c0",
-            "vmArgs": "--module-path C:\\javafx-sdk-20\\lib --add-modules javafx.controls,javafx.fxml"
-
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
