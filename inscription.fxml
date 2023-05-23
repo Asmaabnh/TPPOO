@@ -18,17 +18,10 @@
             </Text>
          </children>
       </Pane>
-      <TextArea fx:id="pseudo" layoutX="59.0" layoutY="107.0" prefHeight="23.0" prefWidth="173.0" promptText="Pseudo" />
+      <TextArea fx:id="pseudo" layoutX="59.0" layoutY="107.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
       <Button fx:id="inscrire" layoutX="120.0" layoutY="226.0" mnemonicParsing="false" style="-fx-background-image: BF5B46;" text="Inscrire" />
-<ChoiceBox id="Nbtachemin" fx:id="nbtachemin" layoutX="59.0" layoutY="157.0" prefHeight="32.0" prefWidth="173.0">
-    <items>
-        <FXCollections fx:factory="observableArrayList">
-            <String fx:value="1" />
-            <String fx:value="2" />
-            <String fx:value="3" />
-            <!-- Ajoutez les autres valeurs ici -->
-        </FXCollections>
-    </items>
-</ChoiceBox>
+      <TextArea fx:id="nbtachemin" layoutX="74.0" layoutY="161.0" prefHeight="44.0" prefWidth="149.0" promptText="Nombre taches min" wrapText="true" />
+
+
    </children>
 </AnchorPane>

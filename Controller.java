@@ -26,7 +26,7 @@ public class Controller {
     private TextArea pseudo;
 
     @FXML
-    private ComboBox<?> nbtachemin;
+    private TextArea nbtachemin;
 
 
 
@@ -53,11 +53,16 @@ public class Controller {
         String nom = pseudo.getText();
         System.out.println("Contenu du TextArea : " + nom);
 
+        String (int) nb = nbtachemin.getText();
+        System.out.println("Contenu du TextArea : " + nb);
+        Utilisateur user = new Utilisateur(nom, nb);
+
+
+
        
 
          
 
-        Utilisateur user = new Utilisateur(null, 0);
         gestion.Inscrire(null);
 
 
@@ -70,7 +75,21 @@ public class Controller {
     @FXML
     void connexion(ActionEvent event) {
 
+        CONNEXION.setOnAction(e -> {
+            Parent root = FXMLLoader.load(getClass().getResource("connexion.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+    
+            String nom = pseudo.getText();
+
+
+
     }
+
+
+
 
     @FXML
     void periode(ActionEvent event) {
