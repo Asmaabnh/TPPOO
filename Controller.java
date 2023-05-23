@@ -39,11 +39,9 @@ public class Controller {
     @FXML
     void inscription(ActionEvent event) {
 
-      //INSCRIRE 
         Authgestion gestion = new Authgestion() ; 
-        //SERIALISATION 
+         
         //INSCIRE() 
-        INSCRIPTION.setOnAction(e -> {
         Parent root = FXMLLoader.load(getClass().getResource("inscription.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -53,24 +51,15 @@ public class Controller {
         String nom = pseudo.getText();
         System.out.println("Contenu du TextArea : " + nom);
 
-        String (int) nb = nbtachemin.getText();
-        System.out.println("Contenu du TextArea : " + nb);
-        Utilisateur user = new Utilisateur(nom, nb);
-
-
-
-       
-
-         
-
-        gestion.Inscrire(null);
-
-
-        });
-        
-       
+        String  nb = nbtachemin.getText();
+        int nombre = Integer.parseInt(nb);
+        System.out.println("Contenu du TextArea : " + nombre);
+        Utilisateur user = new Utilisateur(nom, nombre);
+        gestion.Inscrire(user);   
         
     }
+
+    
 
     @FXML
     void connexion(ActionEvent event) {

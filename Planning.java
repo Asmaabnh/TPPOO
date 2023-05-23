@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Planning {
 
 
@@ -12,6 +14,11 @@ public class Planning {
 
     public static  void replanifier(){} //static?????
     public static  void repporter(){} 
+    public static  void manuelle(){} 
+    public static  void automatique(){} 
+
+
+
 
 
 

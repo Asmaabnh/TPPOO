@@ -35,7 +35,7 @@ public class Authgestion {
     }
     
 
-    private static void sauvegarderUtilisateurs() {
+    private static void sauvegarderUtilisateurs() { //SERIALIZATION
         try (ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(FichierUsers))) {
             objectOut.writeObject(Users);
         } 
@@ -44,7 +44,7 @@ public class Authgestion {
         }
     }
 
-    private static void chargerUtilisateurs() {
+    private static void chargerUtilisateurs() { //DESERIALIZATION
         try (ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(FichierUsers))) {
             Users = (Map<String, Utilisateur>) objectIn.readObject();
         }
