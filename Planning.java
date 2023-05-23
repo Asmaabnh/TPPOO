@@ -47,7 +47,24 @@ public class Planning {
         return false;
     }
 
-    // Dans la classe Planning
+    void afficherPlanning() {
+        System.out.println("Planning :");
+    
+        for (Journee journee : getJournees()) {
+            System.out.println("Journée : " + journee.getDate());
+            List<Creneau> creneaux = journee.getCreneauLibre();
+            if (creneaux.isEmpty()) {
+                System.out.println("Aucun créneau libre.");
+            } else {
+                System.out.println("Créneaux libres :");
+                for (Creneau creneau : creneaux) {
+                    System.out.println("   - De " + creneau.getHeureDebut() + " à " + creneau.getHeureFin());
+                }
+            }
+            System.out.println();
+        }
+    }
+    
 
 @Override
 public String toString() {

@@ -103,20 +103,20 @@ public class Calendrier extends Application {
             dayButton.setOnAction(e -> {
                 // Action lorsque l'utilisateur sélectionne un jour
                 if (date.isBefore(LocalDate.now())) {
-                    showAlert("Sélection invalide", "Veuillez sélectionner une date égale ou supérieure à la date actuelle.");
+                    Journee.showAlert("Sélection invalide", "Veuillez sélectionner une date égale ou supérieure à la date actuelle.");
                 } else {
                     if (planning.containsDate(date)) {
                         planning.removeDate(date);
                         dayButton.setStyle("-fx-background-color: transparent;");
                     } else {
                         Journee journee = new Journee(date);
-                        selectCreneau(journee); // Appel de la méthode pour sélectionner le créneau libre
+                        journee.selectCreneau(journee); // Appel de la méthode pour sélectionner le créneau libre
                         if (journee.getCreneauLibre() != null) {
                             planning.addJournee(journee);
                             dayButton.setStyle("-fx-background-color: lightblue;");
                         } else {
                             // Aucun créneau sélectionné, ne pas ajouter la journée au planning
-                            showAlert("Sélection invalide", "Veuillez sélectionner un créneau libre pour la journée.");
+                            Journee.showAlert("Sélection invalide", "Veuillez sélectionner un créneau libre pour la journée.");
                             planning.removeDate(date); // Supprimer la date de la journée de la liste des journées du planning
                             dayButton.setStyle("-fx-background-color: transparent;");
                         }
@@ -135,219 +135,14 @@ public class Calendrier extends Application {
             }
         }
         System.out.println("---------------------------------------------------------------"); // Afficher la liste des dates sélectionnées dans le terminal
-        afficherPlanning();}
-
-    private void afficherPlanning() {
-        System.out.println("Planning :");
-    
-        for (Journee journee : planning.getJournees()) {
-            System.out.println("Journée : " + journee.getDate());
-            List<Creneau> creneaux = journee.getCreneauLibre();
-            if (creneaux.isEmpty()) {
-                System.out.println("Aucun créneau libre.");
-            } else {
-                System.out.println("Créneaux libres :");
-                for (Creneau creneau : creneaux) {
-                    System.out.println("   - De " + creneau.getHeureDebut() + " à " + creneau.getHeureFin());
-                }
-            }
-            System.out.println();
-        }
-    }
-    
-
-    private void selectCreneau(Journee journee) {
-        Dialog<List<Creneau>> dialog = new Dialog<>();
-        dialog.setTitle("Sélectionner un créneau libre");
-        dialog.setHeaderText(null);
-        ButtonType cancelButton = new ButtonType("Terminer", ButtonData.CANCEL_CLOSE);
-        ButtonType addButton = new ButtonType("Ajouter", ButtonData.APPLY);
-        dialog.getDialogPane().getButtonTypes().addAll(addButton, cancelButton);
-    
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-    
-        TextField startHourField = new TextField();
-        TextField startMinuteField = new TextField();
-        TextField endHourField = new TextField();
-        TextField endMinuteField = new TextField();
-    
-        gridPane.add(new Label("Heure de début (HH:MM)"), 0, 0);
-        gridPane.add(startHourField, 1, 0);
-        gridPane.add(new Label(":"), 2, 0);
-        gridPane.add(startMinuteField, 3, 0);
-    
-        gridPane.add(new Label("Heure de fin (HH:MM)"), 0, 1);
-        gridPane.add(endHourField, 1, 1);
-        gridPane.add(new Label(":"), 2, 1);
-        gridPane.add(endMinuteField, 3, 1);
-    
-        dialog.getDialogPane().setContent(gridPane);
-    
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = journee.getCreneauLibre();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
-                }
-            }
-    
-            return null;
-        });
-    
-        Optional<List<Creneau>> result = dialog.showAndWait();
-    
-        if (result.isPresent() && result.get() != null) {
-            List<Creneau> creneaux = result.get();
-            journee.setCreneauLibre(creneaux);
-            selectCreneau(journee);
-        }
-       
-    }
-
-
-    
-    
-    
+        planning.afficherPlanning();}
 
 
 
- /*    private void selectCreneau(Journee journee) {
-        Dialog<List<Creneau>> dialog = new Dialog<>();
-        dialog.setTitle("Sélectionner un créneau libre");
-        dialog.setHeaderText(null);
-    
-        ButtonType okButton = new ButtonType("Ok", ButtonData.OK_DONE);
-        ButtonType addButton = new ButtonType("Ajouter", ButtonData.APPLY);
-        ButtonType cancelButton = new ButtonType("Annuler", ButtonData.CANCEL_CLOSE);
-        dialog.getDialogPane().getButtonTypes().addAll(okButton, addButton, cancelButton);
-    
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-    
-        TextField startHourField = new TextField();
-        TextField startMinuteField = new TextField();
-        TextField endHourField = new TextField();
-        TextField endMinuteField = new TextField();
-    
-        gridPane.add(new Label("Heure de début (HH:MM)"), 0, 0);
-        gridPane.add(startHourField, 1, 0);
-        gridPane.add(new Label(":"), 2, 0);
-        gridPane.add(startMinuteField, 3, 0);
-    
-        gridPane.add(new Label("Heure de fin (HH:MM)"), 0, 1);
-        gridPane.add(endHourField, 1, 1);
-        gridPane.add(new Label(":"), 2, 1);
-        gridPane.add(endMinuteField, 3, 1);
-    
-        dialog.getDialogPane().setContent(gridPane);
-    
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == okButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = new ArrayList<>();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
-                }
-            } else if (dialogButton == addButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = journee.getCreneauLibre();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
-                }
-            }
-    
-            return null;
-        });
-    
-        Optional<List<Creneau>> result = dialog.showAndWait();
-    
-        if (result.isPresent() && result.get() != null) {
-            List<Creneau> creneaux = result.get();
-            journee.setCreneauLibre(creneaux);
-            selectCreneau(journee);
-        }
-    }*/
-    
-    
-    
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-    
 
+
+
+    
+    
    
 }
