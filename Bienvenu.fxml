@@ -10,20 +10,31 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <Pane prefHeight="400.0" prefWidth="315.0" style="-fx-background-color: BF5B46;">
+      <Pane prefHeight="274.0" prefWidth="600.0" style="-fx-background-color: BF5B46;">
          <children>
-            <Text layoutX="49.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenu! //AMODIFIER" wrappingWidth="241.55078125">
+            <Text fill="#f5e8e8" layoutX="29.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenue dans Planner ! //AMODIFIER" wrappingWidth="429.55078125">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Text>
-            <ImageView fitHeight="150.0" fitWidth="200.0" focusTraversable="true" layoutX="54.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView disable="true" fitHeight="150.0" fitWidth="185.0" focusTraversable="true" layoutX="386.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../Desktop/Zz03ZjExMjRhNjhkOWQxMWViYTRjNzg1YmZhZTIzZTFkMA==.jpg" />
+                  <Image url="@image.jpg" />
                </image>
             </ImageView>
+            <Text fill="#fff8f8" layoutX="14.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Un planning efficace pour des journées productives!" wrappingWidth="327.1865234375">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
          </children></Pane>
-      <Button fx:id="INSCRIPTION" layoutX="360.0" layoutY="273.0" mnemonicParsing="false" onAction="#inscription" prefHeight="50.0" prefWidth="163.0" text="INSCRIPTION" />
-      <Button fx:id="CONNEXION" layoutX="367.0" layoutY="175.0" mnemonicParsing="false" onAction="#connexion" prefHeight="50.0" prefWidth="163.0" text="CONNEXION" />
+      <Button fx:id="INSCRIPTION" layoutX="397.0" layoutY="311.0" mnemonicParsing="false" onAction="#inscription" prefHeight="50.0" prefWidth="163.0" style="-fx-background-color: BF5A45;" text="INSCRIPTION" textFill="#fcf3f3">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="CONNEXION" layoutX="180.0" layoutY="311.0" mnemonicParsing="false" onAction="#connexion" prefHeight="50.0" prefWidth="163.0" style="-fx-background-color: BF5A45;" text="CONNEXION" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -3,6 +3,9 @@ public class Categorie {
 
 
     private String nom;
+    private String couleur ; 
+
+
 
     public Categorie(String nom) {
         this.nom = nom;

@@ -19,6 +19,9 @@ public class Authgestion {
         if (!pseudoExiste(utilisateur.getPseudo())) {
             Users.put(utilisateur.getPseudo(), utilisateur);
             sauvegarderUtilisateurs();
+            JOptionPane.showMessageDialog(null, "BIENVENUE DANS VOTRE NOUVEAU COMPTE!");
+
+
         } else {
             JOptionPane.showMessageDialog(null, "Le pseudo est déjà utilisé ! Choisissez un autre.");
         }

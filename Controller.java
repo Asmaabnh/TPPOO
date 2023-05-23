@@ -1,4 +1,8 @@
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,7 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
@@ -24,10 +31,14 @@ public class Controller {
     private Button CONNEXION;
 
 
+   
     @FXML
-    private TextArea pseudocnx;
+    private TextArea pseudocnx; // Correspond à l'ID pseudocnx dans le fichier FXML
+    
     @FXML
     private TextArea pseudoinsc;
+
+
 
     @FXML
     private TextArea nbtachemin;
@@ -43,32 +54,22 @@ public class Controller {
     @FXML
     void inscription(ActionEvent event) throws IOException {
 
-        Authgestion gestion = new Authgestion() ; 
-        //INSCIRE() 
         Parent root = FXMLLoader.load(getClass().getResource("inscription.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
 
-        String nom = pseudoinsc.getText();
-        System.out.println("Contenu du TextArea : " + nom);
-
-        String  nb = nbtachemin.getText();
-        int nombre = Integer.parseInt(nb);
-        System.out.println("Contenu du TextArea : " + nombre);
-
-        Utilisateur user = new Utilisateur(nom, nombre);
-        gestion.Inscrire(user);   
+                 
         
     }
 
 
+   
 
     @FXML
     void connexion(ActionEvent event) throws IOException {
 
-         Authgestion gestion = new Authgestion() ; 
 
             Parent root = FXMLLoader.load(getClass().getResource("connexion.fxml"));
             Scene scene = new Scene(root);
@@ -76,16 +77,48 @@ public class Controller {
             stage.setScene(scene);
             stage.show();
     
-            String nom = pseudocnx.getText();
-            boolean authentifier = gestion.Connecter(nom); 
-            if ( authentifier ){}  ///AMOOODIFIER
+           
+         
+    }
+
+  @FXML
+    void Calendrier(ActionEvent event) throws IOException {
+
+        Authgestion gestion = new Authgestion() ; 
+        String nom = pseudocnx.getText();
+        //System.out.println("Cest le pseudo : " + nom);
+
+        boolean authentifier = gestion.Connecter(nom);
+
+        if ( authentifier ){ 
+        JOptionPane.showMessageDialog(null, "Bienvenue dans votre Planning !"); 
+        ///AMOOODIFIER
+
+        Parent root = FXMLLoader.load(getClass().getResource("calendrier.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+        //COMME ON A DEJA DESERIALISE LE USER ET IL CONTIENT UN PLANNING ON VA LAFFICHER 
+    }
     }
 
 
-
+    /**/
 
     @FXML
     void periode(ActionEvent event) {
+       
+        Authgestion gestion = new Authgestion() ; 
+        String nom = pseudoinsc.getText();
+       // System.out.println("LE pseudo est  : " + nom);
+
+        String  nb = nbtachemin.getText();
+        int nombre = Integer.parseInt(nb);
+        //System.out.println("Nombre de taches min  : " + nombre);
+
+        Utilisateur user = new Utilisateur(nom, nombre);
+        gestion.Inscrire(user);
 
 
     }
@@ -99,6 +132,28 @@ public class Controller {
         stage.show();
     }*/
   
+
+    @FXML
+    private TextArea nomtache;
+
+    @FXML
+    private Button confirmer;
+
+    @FXML
+    private DatePicker deadline;
+
+    @FXML
+    private ComboBox<String> type;
+    
+    public void combobox() {
+        List<String> liste = Arrays.asList("Simple", "Decomposable");
+        ObservableList<String> options = FXCollections.observableArrayList(liste);
+        type.setItems(options);
+    }
+
+
+    
+    
 
 }
 

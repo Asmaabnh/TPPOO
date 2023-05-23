@@ -20,7 +20,6 @@ public class App1 extends Application {
   } catch(Exception e) {
    e.printStackTrace();
   } 
- 
  } 
 
 
