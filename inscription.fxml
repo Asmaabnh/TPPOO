@@ -18,7 +18,7 @@
             </Text>
          </children>
       </Pane>
-      <TextArea fx:id="pseudo" layoutX="59.0" layoutY="107.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
+      <TextArea fx:id="pseudoinsc" layoutX="59.0" layoutY="107.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
       <Button fx:id="inscrire" layoutX="120.0" layoutY="226.0" mnemonicParsing="false" style="-fx-background-image: BF5B46;" text="Inscrire" />
       <TextArea fx:id="nbtachemin" layoutX="74.0" layoutY="161.0" prefHeight="44.0" prefWidth="149.0" promptText="Nombre taches min" wrapText="true" />
 
