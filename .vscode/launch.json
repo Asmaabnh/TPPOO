@@ -6,11 +6,32 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< Updated upstream
+=======
+            "name": "CustomDatePickerApp",
+            "request": "launch",
+            "mainClass": "CustomDatePickerApp",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+
+        },
+        {
+            "type": "java",
+            "name": "DatePickerApp",
+            "request": "launch",
+            "mainClass": "DatePickerApp",
+            "projectName": "TPPOO_a2bb8d69",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
+>>>>>>> Stashed changes
             "name": "Calendrier",
             "request": "launch",
             "mainClass": "Calendrier",
             "projectName": "TPPOO_a2bb8d69",
             "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+<<<<<<< Updated upstream
        
         },
         {
@@ -18,11 +39,20 @@
             "name": "App1",
             "request": "launch",
             "mainClass": "App1",
+=======
+        },
+        {
+            "type": "java",
+            "name": "testcalendrierchatgpt",
+            "request": "launch",
+            "mainClass": "testcalendrierchatgpt",
+>>>>>>> Stashed changes
             "projectName": "TPPOO_a2bb8d69",
             "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
+<<<<<<< Updated upstream
             "name": "Datepicker",
             "request": "launch",
             "mainClass": "Datepicker",
@@ -38,6 +68,8 @@
         },
         {
             "type": "java",
+=======
+>>>>>>> Stashed changes
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -49,6 +81,17 @@
             "mainClass": "App",
             "projectName": "TPPOO_4d0797c0",
             "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+<<<<<<< Updated upstream
+=======
+        },
+        {
+            "type": "java",
+            "name": "App1",
+            "request": "launch",
+            "mainClass": "App1",
+            "projectName": "TPPOO_4d0797c0",
+            "vmArgs": "--module-path \"C:/JAVA/javafx-sdk-20/lib\" --add-modules javafx.controls,javafx.fxml"
+>>>>>>> Stashed changes
         },
         {
             "type": "java",

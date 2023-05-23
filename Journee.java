@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+<<<<<<< Updated upstream
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.layout.GridPane;
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> Stashed changes
 
 public class Journee {
     private LocalDate date;
@@ -32,6 +37,7 @@ public class Journee {
     public void setCreneauLibre(List<Creneau> creneaux) {
         creneauLibre = creneaux;
     }
+<<<<<<< Updated upstream
 
     void selectCreneau(Journee journee) {
         Dialog<List<Creneau>> dialog = new Dialog<>();
@@ -119,4 +125,6 @@ public class Journee {
     
     
     
+=======
+>>>>>>> Stashed changes
 }
