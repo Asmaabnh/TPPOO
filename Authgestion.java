@@ -29,10 +29,16 @@ public class Authgestion {
 
 
 
-    public static boolean Connecter(String pseudo) {
+    public static boolean  Connecter(String pseudo) {
         chargerUtilisateurs();
-        return Users.containsKey(pseudo);
+        if ( pseudoExiste( pseudo)) { return true ;  }
+        else {  
+     JOptionPane.showMessageDialog(null, "L'utilisateur n'existe pas!");
+     return false ; 
     }
+            
+    }
+
     
 
     private static void sauvegarderUtilisateurs() { //SERIALIZATION

@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,7 +25,9 @@ public class Controller {
 
 
     @FXML
-    private TextArea pseudo;
+    private TextArea pseudocnx;
+    @FXML
+    private TextArea pseudoinsc;
 
     @FXML
     private TextArea nbtachemin;
@@ -37,10 +41,9 @@ public class Controller {
    
 
     @FXML
-    void inscription(ActionEvent event) {
+    void inscription(ActionEvent event) throws IOException {
 
         Authgestion gestion = new Authgestion() ; 
-         
         //INSCIRE() 
         Parent root = FXMLLoader.load(getClass().getResource("inscription.fxml"));
         Scene scene = new Scene(root);
@@ -48,33 +51,34 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
 
-        String nom = pseudo.getText();
+        String nom = pseudoinsc.getText();
         System.out.println("Contenu du TextArea : " + nom);
 
         String  nb = nbtachemin.getText();
         int nombre = Integer.parseInt(nb);
         System.out.println("Contenu du TextArea : " + nombre);
+
         Utilisateur user = new Utilisateur(nom, nombre);
         gestion.Inscrire(user);   
         
     }
 
-    
+
 
     @FXML
-    void connexion(ActionEvent event) {
+    void connexion(ActionEvent event) throws IOException {
 
-        CONNEXION.setOnAction(e -> {
+         Authgestion gestion = new Authgestion() ; 
+
             Parent root = FXMLLoader.load(getClass().getResource("connexion.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
     
-            String nom = pseudo.getText();
-
-
-
+            String nom = pseudocnx.getText();
+            boolean authentifier = gestion.Connecter(nom); 
+            if ( authentifier ){}  ///AMOOODIFIER
     }
 
 
@@ -82,6 +86,7 @@ public class Controller {
 
     @FXML
     void periode(ActionEvent event) {
+
 
     }
 

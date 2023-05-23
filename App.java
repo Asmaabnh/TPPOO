@@ -2,7 +2,7 @@ public class App {
     public static void main(String[] args) {
         // Création d'un utilisateur
         Utilisateur utilisateur = new Utilisateur("user1", 5);
-
+Authgestion sys = new  Authgestion( );
         /*Appel de la méthode pour fixer une période
         String periode = utilisateur.fixerperiode();
         System.out.println("Période fixée : " + periode);
@@ -12,11 +12,11 @@ public class App {
         utilisateur.completeTask(tache);*/
 
         // Enregistrement de l'utilisateur
-        Utilisateur.Inscrire(utilisateur);
+        sys.Inscrire(utilisateur);
 
         // Authentification de l'utilisateur
         String pseudo = "Ikraaam";
-        boolean authentifie = Utilisateur.Connecter(pseudo);
+         boolean authentifie = sys.Connecter(pseudo);
 
         if (authentifie) {
             System.out.println("Authentification réussie pour l'utilisateur : " + pseudo);
