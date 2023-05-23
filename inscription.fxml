@@ -11,7 +11,7 @@
    <children>
       <Pane layoutY="-1.0" prefHeight="59.0" prefWidth="311.0" style="-fx-background-color: BF5B46;">
          <children>
-            <Text layoutX="61.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscrivez-vous!" wrappingWidth="235.375">
+            <Text layoutX="67.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscrivez-vous!" wrappingWidth="235.375">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -19,9 +19,9 @@
          </children>
       </Pane>
       
-      <TextArea fx:id="pseudoinsc" layoutX="59.0" layoutY="107.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
-      <Button fx:id="inscrire" layoutX="120.0" layoutY="226.0" mnemonicParsing="false" onAction="#periode" style="-fx-background-image: BF5B46;" text="Inscrire" />
-      <TextArea fx:id="nbtachemin" layoutX="74.0" layoutY="161.0" prefHeight="44.0" prefWidth="149.0" promptText="Nombre taches min" wrapText="true" />
+      <TextArea fx:id="pseudoinsc" layoutX="59.0" layoutY="107.0" prefHeight="26.0" prefWidth="175.0" promptText="Pseudo" />
+      <Button fx:id="inscrire" layoutX="120.0" layoutY="226.0" mnemonicParsing="false" onAction="#periode" style="-fx-background-color: BF5B46;" text="Inscrire" />
+      <TextArea fx:id="nbtachemin" layoutX="74.0" layoutY="161.0" prefHeight="44.0" prefWidth="137.0" promptText="Nombre taches min" wrapText="true" />
 
 
    </children>

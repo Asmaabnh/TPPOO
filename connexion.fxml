@@ -20,8 +20,13 @@
                   </Text>
                </children>
             </Pane>
-            <TextArea fx:id="pseudocnx" layoutX="47.0" layoutY="116.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
+            <TextArea fx:id="pseudocnx" layoutX="47.0" layoutY="125.0" prefHeight="44.0" prefWidth="179.0" promptText="Pseudo" />
             <Button fx:id="connecter" layoutX="104.0" layoutY="193.0" mnemonicParsing="false" onAction="#Calendrier" style="-fx-background-image: BF5B46;" text="Connecter" />
+            <Text layoutX="57.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez votre pseudo : " wrappingWidth="140.154296875">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

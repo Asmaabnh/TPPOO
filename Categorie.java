@@ -7,8 +7,10 @@ public class Categorie {
 
 
 
-    public Categorie(String nom) {
+    public Categorie(String nom , String couleur) {
         this.nom = nom;
+        this.couleur = couleur;
+
     }
 
 
