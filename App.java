@@ -1,7 +1,7 @@
 public class App {
     public static void main(String[] args) {
         // Création d'un utilisateur
-        Utilisateur utilisateur = new Utilisateur("user1", 5);
+        Utilisateur utilisateur = new Utilisateur("SMOUU", 5);
 Authgestion sys = new  Authgestion( );
         /*Appel de la méthode pour fixer une période
         String periode = utilisateur.fixerperiode();
@@ -16,12 +16,18 @@ Authgestion sys = new  Authgestion( );
 
         // Authentification de l'utilisateur
         String pseudo = "Ikraaam";
-         boolean authentifie = sys.Connecter(pseudo);
+        String pseudoé = "SMOUU";
 
-        if (authentifie) {
-            System.out.println("Authentification réussie pour l'utilisateur : " + pseudo);
+         boolean authentifie = sys.Connecter(pseudo);
+         boolean authentifie2 = sys.Connecter(pseudoé);
+
+
+        if (authentifie2) {
+            System.out.println("Authentification réussie pour l'utilisateur : " + pseudoé);
         } else {
-            System.out.println("Authentification échouée pour l'utilisateur : " + pseudo);
+            System.out.println("Authentification échouée pour l'utilisateur : " + pseudoé);
         }
     }
+
+    
 }
