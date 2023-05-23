@@ -1,4 +1,4 @@
-public class App {
+public class test {
     public static void main(String[] args) {
         // Création d'un utilisateur
         Utilisateur utilisateur = new Utilisateur("SMOUU", 5);
@@ -29,5 +29,5 @@ Authgestion sys = new  Authgestion( );
         }
     }
 
-    
+
 }

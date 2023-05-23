@@ -31,10 +31,14 @@ public class Authgestion {
 
     public static boolean  Connecter(String pseudo) {
         chargerUtilisateurs();
-        if ( pseudoExiste( pseudo)) { return true ;  }
-        else {  
-     JOptionPane.showMessageDialog(null, "L'utilisateur n'existe pas!");
-     return false ; 
+        if ( pseudoExiste( pseudo))
+         { return true ;  }
+
+        else{
+      
+          JOptionPane.showMessageDialog(null, "L'utilisateur n'existe pas!");
+          return false ;  
+
     }
             
     }
