@@ -144,13 +144,21 @@ public class Controller {
 
     @FXML
     private ComboBox<String> type;
+
+    @FXML
+    private ComboBox<String> priorite;
     
-    public void combobox() {
-        List<String> liste = Arrays.asList("Simple", "Decomposable");
+    public void type() {
+        List<String> liste = Arrays.asList("Simple", "Décomposable");
         ObservableList<String> options = FXCollections.observableArrayList(liste);
         type.setItems(options);
     }
 
+    public void priorite() {
+        List<String> liste = Arrays.asList("Haute", "Moyenne" , "Basse");
+        ObservableList<String> options = FXCollections.observableArrayList(liste);
+        priorite.setItems(options);
+    }
 
     
     
