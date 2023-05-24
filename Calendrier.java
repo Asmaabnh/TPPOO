@@ -68,6 +68,9 @@ public class Calendrier extends Application {
         primaryStage.show();
     }
 
+
+
+
     private void updateCalendar() {
         calendarGrid.getChildren().clear();
 
@@ -137,6 +140,10 @@ public class Calendrier extends Application {
         System.out.println("---------------------------------------------------------------"); // Afficher la liste des dates sélectionnées dans le terminal
         afficherPlanning();}
 
+
+
+
+
     private void afficherPlanning() {
         System.out.println("Planning :");
     
@@ -154,6 +161,8 @@ public class Calendrier extends Application {
             System.out.println();
         }
     }
+    
+
     
 
     private void selectCreneau(Journee journee) {

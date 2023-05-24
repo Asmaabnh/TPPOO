@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -57,7 +60,7 @@ public class Controller {
     @FXML
     void inscription(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("tache.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("categorie.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -174,7 +177,7 @@ public class Controller {
     private TextArea duree;
 
     @FXML
-    private Spinner<String> heurelimite;
+    private TextArea heurelimite;
 
     @FXML
     private ComboBox<Categorie> categorie;
@@ -206,7 +209,7 @@ public class Controller {
     tacheController.type();
    
     tacheController.priorite();
-   
+
         
     }
 
@@ -219,46 +222,88 @@ public class Controller {
         priorite.setItems(options);
     }
 
+
+
+   
+    private List<Simple> listeSimple = new ArrayList<>();
+    private List<Decomposable> listeDecomposable = new ArrayList<>();
     
     @FXML
-    void confirmertache(ActionEvent event) {
+    void  confirmertache(ActionEvent event) {
+
 
         String selectedType = type.getValue(); // Récupère le type 
         String selectedPriorite = priorite.getValue(); // Récupère la prioritée
         String nom = nomtache.getText(); // Récupère le 'nomtache'
         LocalDate selectedDate = datelimite.getValue(); // Récupère la date sélectionnée dans le DatePicker 'datelimite'
         String dureeText = duree.getText(); // Récupère lA'duree'
-        String selectedHeure =  heurelimite.getValue(); // Récupère la valeur sélectionnée dans le Spinner 'heurelimite'
-        Categorie selectedCategorie = (Categorie) categorie.getValue(); // Récupère la valeur sélectionnée dans le  'categorie'
+        String selectedHeure =  heurelimite.getText(); // Récupère la valeur sélectionnée dans le Spinner 'heurelimite'
+       Categorie selectedCategorie = categorie.getValue(); // Récupère la valeur sélectionnée dans le  'categorie'
 
         System.out.println(selectedPriorite);
         System.out.println(nom);
         System.out.println(selectedDate);
         System.out.println(dureeText);
         System.out.println(selectedHeure);
-        System.out.println(selectedCategorie);
+       System.out.println(selectedCategorie);
 
-if (selectedType == "Simple")  {
+       if (selectedType == "Simple")  {
 
-    //AFFICHER UN MESSAGE S4IL LA VEUT PERIODIQUE 
-       // Simple tache = new Simple()  ; 
+       //AFFICHER UN MESSAGE S4IL LA VEUT PERIODIQUE 
+      int option = JOptionPane.showOptionDialog(null, "Voulez-vous que cette tache soit périodique ?", "Periodicité Tache!",
+      JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+ 
+       if (option == JOptionPane.YES_OPTION) {
+       Simple tache = new Simple(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie, true)  ; 
+       System.out.println("L'utilisateur a cliqué sur Oui.");
+         listeSimple.add(tache);
 
-}
-
-
-if (selectedType == "Décomposable") {
-       // Decomposable tache = new Decomposable()  ; 
-
-}
+       } else if (option == JOptionPane.NO_OPTION) {
+        Decomposable tache = new Decomposable(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie)  ; 
+      System.out.println("L'utilisateur a cliqué sur Non.");
+       listeDecomposable.add(tache);}}
 
 
 
+      else {
+      if (selectedType == "Décomposable") {
+      Decomposable tache = new Decomposable(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie)  ; 
 
-        
-        }
+           }}
+
+    }
     
+    public List<Simple> getListeSimple() {
+        return listeSimple;} 
+
+
+    public List<Decomposable> getListeDecomposable() {
+        return listeDecomposable;}
+
+    /* POUUUUR OBTENIR LES DEUX  LISTES 
+     FXMLLoader loader = new FXMLLoader(getClass().getResource("votre_fichier.fxml"));
+Parent root = loader.load();
+Controller controller = loader.getController();
+
+List<Simple> listeSimple = controller.getListeSimple();
+List<Decomposable> listeDecomposable = controller.getListeDecomposable();
+ */
+  @FXML
+    public void  terminertache(ActionEvent event) {} //AVANCER A LA PAGE SUIVANTE 
+
+    @FXML
+    private ColorPicker couleur;
+    @FXML
+    private TextArea nomcategorie;
+
+  
+    @FXML
+    void confirmercategorie(ActionEvent event) {
+
+    }
+
    
-   
+
     
 
 }
