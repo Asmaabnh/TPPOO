@@ -32,7 +32,8 @@ public class Journee {
     public void setCreneauLibre(List<Creneau> creneaux) {
         creneauLibre = creneaux;
     }
-
+  
+    
     void selectCreneau(Journee journee) {
         Dialog<List<Creneau>> dialog = new Dialog<>();
         dialog.setTitle("Sélectionner un créneau libre");

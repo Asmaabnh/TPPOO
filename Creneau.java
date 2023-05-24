@@ -1,10 +1,10 @@
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Creneau {
     private LocalTime heureDebut;
     private LocalTime heureFin;
-
+    private boolean occupé;
+    private boolean bloqué;
     public Creneau(LocalTime heureDebut, LocalTime heureFin) {
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;

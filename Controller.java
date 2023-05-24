@@ -16,13 +16,21 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Controller {
+    private Pane calendarPane;
 
+  
 
     @FXML
     private Button INSCRIPTION;
@@ -123,6 +131,8 @@ public class Controller {
 
     }
 
+    
+    
 
     /*  public void handleConnexion(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("SignIn.fxml"));
@@ -160,6 +170,12 @@ public class Controller {
         priorite.setItems(options);
     }
 
+
+
+    public void setCalendarPane(Pane calendarPane) {
+        this.calendarPane = calendarPane;
+    }
+    
     
     
 
