@@ -1,20 +1,22 @@
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ButtonBar.ButtonData;
-import java.time.LocalTime;
 import java.time.LocalDate;
 import java.time.YearMonth;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.beans.property.SimpleObjectProperty;
+
 import java.util.List;
-import java.util.Optional;
+
 
 public class Calendrier  {
     private YearMonth currentYearMonth;
@@ -36,33 +38,20 @@ public class Calendrier  {
     public  void updateCalendar(YearMonth currentYearMonth) {
         calendarGrid.getChildren().clear();
 
-        // Obtention de l'année et du mois actuels
-        int year = currentYearMonth.getYear();
-        int month = currentYearMonth.getMonthValue();
 
-        // Obtention du premier jour du mois
-        LocalDate firstDayOfMonth = LocalDate.of(year, month, 1);
-        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue();
 
-        // Affichage de l'année et du mois
-        Label monthLabel = new Label(currentYearMonth.getMonth().toString() + " " + year);
-        calendarGrid.add(monthLabel, 0, 0, 7, 1);
 
-        // Affichage des jours de la semaine
-        String[] daysOfWeek = {"Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"};
-        for (int i = 0; i < daysOfWeek.length; i++) {
-            Label dayLabel = new Label(daysOfWeek[i]);
-            calendarGrid.add(dayLabel, i, 1);
-        }
+// Méthode pour afficher le calendrier et récupérer les dates et les créneaux sélectionnés, et renvoyer le planning modifié
+private Planning displayCalendarAndUpdatePlanning() {
+    calendarGrid.getChildren().clear();
 
-        // Affichage des jours du mois
-        int row = 2;
-        int col = startDayOfWeek - 1;
-        int daysInMonth = currentYearMonth.lengthOfMonth();
+    // Obtention de l'année et du mois actuels
+    int year = currentYearMonth.getYear();
+    int month = currentYearMonth.getMonthValue();
 
-        for (int day = 1; day <= daysInMonth; day++) {
-            Button dayButton = new Button(Integer.toString(day));
-            dayButton.setPrefWidth(40);
+    // Obtention du premier jour du mois
+    LocalDate firstDayOfMonth = LocalDate.of(year, month, 1);
+    int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue();
 
             LocalDate date = LocalDate.of(year, month, day);
             dayButton.setOnAction(e -> {
@@ -91,7 +80,12 @@ public class Calendrier  {
                 }
             });
 
-            calendarGrid.add(dayButton, col, row);
+    // Affichage des jours de la semaine
+    String[] daysOfWeek = {"Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"};
+    for (int i = 0; i < daysOfWeek.length; i++) {
+        Label dayLabel = new Label(daysOfWeek[i]);
+        calendarGrid.add(dayLabel, i, 1);
+    }
 
             col++;
             if (col == 7) {
@@ -131,125 +125,62 @@ public class Calendrier  {
 
   
 
+    // Mettre à jour le planning
+ updatePlanningTable(planning);
+    return planning; // Renvoyer le planning modifié
+}
 
-    
-    
-    
+// Méthode pour afficher le planning dans le TableView
+private void updatePlanningTable(Planning planning) {
+    // TableView pour afficher les journées et les créneaux libres
+    TableView<Journee> planningTable = new TableView<>();
+    TableColumn<Journee, LocalDate> dateColumn = new TableColumn<>("Date");
+    TableColumn<Journee, Void> creneauxColumn = new TableColumn<>("Créneaux");
 
+    // Colonne pour afficher la date
+    dateColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getDate()));
 
-
- /*    private void selectCreneau(Journee journee) {
-        Dialog<List<Creneau>> dialog = new Dialog<>();
-        dialog.setTitle("Sélectionner un créneau libre");
-        dialog.setHeaderText(null);
-    
-        ButtonType okButton = new ButtonType("Ok", ButtonData.OK_DONE);
-        ButtonType addButton = new ButtonType("Ajouter", ButtonData.APPLY);
-        ButtonType cancelButton = new ButtonType("Annuler", ButtonData.CANCEL_CLOSE);
-        dialog.getDialogPane().getButtonTypes().addAll(okButton, addButton, cancelButton);
-    
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-    
-        TextField startHourField = new TextField();
-        TextField startMinuteField = new TextField();
-        TextField endHourField = new TextField();
-        TextField endMinuteField = new TextField();
-    
-        gridPane.add(new Label("Heure de début (HH:MM)"), 0, 0);
-        gridPane.add(startHourField, 1, 0);
-        gridPane.add(new Label(":"), 2, 0);
-        gridPane.add(startMinuteField, 3, 0);
-    
-        gridPane.add(new Label("Heure de fin (HH:MM)"), 0, 1);
-        gridPane.add(endHourField, 1, 1);
-        gridPane.add(new Label(":"), 2, 1);
-        gridPane.add(endMinuteField, 3, 1);
-    
-        dialog.getDialogPane().setContent(gridPane);
-    
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == okButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = new ArrayList<>();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
+    // Colonne pour afficher les boutons de créneaux libres
+    creneauxColumn.setCellFactory(param -> new TableCell<>() {
+        @Override
+        protected void updateItem(Void item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty) {
+                setGraphic(null);
+            } else {
+                int rowIndex = getIndex();
+                Journee journee = planningTable.getItems().get(rowIndex);
+                List<Creneau> creneauxLibres = journee.getCreneauLibre();
+                HBox hbox = new HBox();
+                hbox.setSpacing(5);
+                for (Creneau creneau : creneauxLibres) {
+                    Button creneauButton = new Button("de " + creneau.getHeureDebut() + " à " + creneau.getHeureFin());
+                    handleCreneauButtonClick(creneauButton);
+                    hbox.getChildren().add(creneauButton);
                 }
-            } else if (dialogButton == addButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = journee.getCreneauLibre();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
-                }
+                setGraphic(hbox);
             }
-    
-            return null;
-        });
-    
-        Optional<List<Creneau>> result = dialog.showAndWait();
-    
-        if (result.isPresent() && result.get() != null) {
-            List<Creneau> creneaux = result.get();
-            journee.setCreneauLibre(creneaux);
-            selectCreneau(journee);
         }
-    }*/
-    
-    
-    
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-    
+    });
 
-   
+    // Créez et initialisez l'ObservableList<Journee> avec les journées du planning
+    ObservableList<Journee> observableJournees = FXCollections.observableArrayList(planning.getJournees());
+
+    planningTable.getColumns().addAll(dateColumn, creneauxColumn);
+    planningTable.setItems(observableJournees);
+
+    // Ajouter le TableView à la grille du calendrier
+  calendarGrid.add(planningTable, 0, 8, 7, 1); 
+
+}
+
+private String selectedCreneauText;
+
+// Méthode pour gérer le clic sur un bouton de créneau libre
+private void handleCreneauButtonClick(Button creneauButton) {
+    creneauButton.setOnAction(e -> {
+        selectedCreneauText = creneauButton.getText();
+        System.out.println(selectedCreneauText);
+    });
+}
 }

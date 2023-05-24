@@ -32,6 +32,16 @@ public class Creneau {
             return heureFin;
         }
         
+
+        
+    public static LocalTime getCreneauMin() {
+        return creneauMin;
+    }
+    
+    public static void setCreneauMin(LocalTime creneauMin) {
+        Creneau.creneauMin = creneauMin;
+    }
+
         // Autres méthodes de la classe
 
 
