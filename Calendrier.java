@@ -173,10 +173,7 @@ private void updatePlanningTable(Planning planning) {
                 hbox.setSpacing(5);
                 for (Creneau creneau : creneauxLibres) {
                     Button creneauButton = new Button("de " + creneau.getHeureDebut() + " à " + creneau.getHeureFin());
-                    creneauButton.setOnAction(e -> {
-                        // Action lorsque l'utilisateur sélectionne un créneau
-                        // Faites quelque chose avec le créneau sélectionné
-                    });
+                    handleCreneauButtonClick(creneauButton);
                     hbox.getChildren().add(creneauButton);
                 }
                 setGraphic(hbox);
@@ -195,5 +192,13 @@ private void updatePlanningTable(Planning planning) {
 
 }
 
+private String selectedCreneauText;
 
+// Méthode pour gérer le clic sur un bouton de créneau libre
+private void handleCreneauButtonClick(Button creneauButton) {
+    creneauButton.setOnAction(e -> {
+        selectedCreneauText = creneauButton.getText();
+        System.out.println(selectedCreneauText);
+    });
+}
 }
