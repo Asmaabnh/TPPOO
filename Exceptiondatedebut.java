@@ -1,10 +1,18 @@
+import javafx.scene.control.Alert;
 
 public class Exceptiondatedebut extends Exception {
-	public String getmessage() {
-		return "ERREUR DANS LA DATE DEBUT " ; 
+	
+	public void getmessage() {
+		showAlert("Sélection invalide", "Veuillez sélectionner une date égale ou supérieure à la date actuelle.");
 	}
 
-	private int i ; 
+	private  void showAlert(String title, String message) {
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+		alert.showAndWait();
+	}
 
 }
 

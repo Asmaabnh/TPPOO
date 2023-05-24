@@ -9,6 +9,8 @@ public class Projet {
     private String description ; 
     private List<String> taches = new ArrayList<>();
 
+
+
     public Projet( String nom, String description ,  List<String> taches  ) {
         this.nom = nom ; 
         this.description = description ; 

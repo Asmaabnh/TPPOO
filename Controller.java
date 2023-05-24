@@ -111,6 +111,7 @@ public class Controller {
     }
 
     public void executeApresInscription() throws IOException {
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("crenETperiod.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -120,7 +121,6 @@ public class Controller {
         primaryStage.setScene(scene);
         primaryStage.show();
     
-        // Ajoutez le code suivant pour initialiser et afficher le calendrier dans la nouvelle fenêtre
         AtomicReference<YearMonth> currentYearMonth = new AtomicReference<>(YearMonth.now());
         Planning planning = new Planning();
     
@@ -208,6 +208,14 @@ public class Controller {
     }
 
  
+    @FXML
+    private Button planifiermanuelle;
+
+    @FXML
+    private Button planifierauto;
+
+    @FXML
+    private Button projet;
 
     
     @FXML
@@ -238,6 +246,7 @@ public class Controller {
     @FXML
     private TextArea nomcategorie;
     
+
     @FXML
     void  confirmertache(ActionEvent event) {
 
@@ -349,6 +358,11 @@ List<Decomposable> listeDecomposable = controller.getListeDecomposable();
     }
     }
     
+    @FXML
+    void creerprojet(ActionEvent event) {
+
+    }
+
 }
 
     
