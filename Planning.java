@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Planning {
+
     private List<Journee> journees;
 
 
@@ -20,6 +21,9 @@ public class Planning {
     public Planning() {
         journees = new ArrayList<>();
     }
+
+
+
 
     public void addDate(LocalDate date) {
         Journee journee = new Journee(date);
@@ -57,5 +61,7 @@ public String toString() {
     }
     return sb.toString();
 }
+
+
 
 }

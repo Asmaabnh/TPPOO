@@ -16,62 +16,24 @@ import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 
-public class Calendrier extends Application {
+public class Calendrier  {
     private YearMonth currentYearMonth;
     private GridPane calendarGrid;
     private Planning planning;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage) {
-        currentYearMonth = YearMonth.now();
-        planning = new Planning();
-
-        // Création de la grille du calendrier
-        calendarGrid = new GridPane();
-        calendarGrid.setAlignment(Pos.CENTER);
-        calendarGrid.setHgap(10);
-        calendarGrid.setVgap(10);
-
-        // Affichage initial du calendrier
-        updateCalendar();
-
-        // Boutons de navigation
-        Button prevButton = new Button("<<");
-        prevButton.setOnAction(e -> {
-            currentYearMonth = currentYearMonth.minusMonths(1);
-            updateCalendar();
-        });
-
-        Button nextButton = new Button(">>");
-        nextButton.setOnAction(e -> {
-            currentYearMonth = currentYearMonth.plusMonths(1);
-            updateCalendar();
-        });
-
-        // Création de la scène
-        GridPane root = new GridPane();
-        root.setAlignment(Pos.CENTER);
-        root.setHgap(10);
-        root.setVgap(10);
-        root.add(prevButton, 0, 0);
-        root.add(nextButton, 2, 0);
-        root.add(calendarGrid, 0, 1, 3, 1);
-
-        Scene scene = new Scene(root, 400, 400);
-
-        primaryStage.setTitle("Calendrier");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    public Calendrier(YearMonth currentYearMonth, GridPane calendarGrid, Planning planning) {
+        this.currentYearMonth = currentYearMonth;
+        this.calendarGrid = calendarGrid;
+        this.planning = planning;
     }
 
 
 
 
-    private void updateCalendar() {
+
+
+    public  void updateCalendar(YearMonth currentYearMonth) {
         calendarGrid.getChildren().clear();
 
         // Obtention de l'année et du mois actuels
@@ -113,7 +75,7 @@ public class Calendrier extends Application {
                         dayButton.setStyle("-fx-background-color: transparent;");
                     } else {
                         Journee journee = new Journee(date);
-                        selectCreneau(journee); // Appel de la méthode pour sélectionner le créneau libre
+                        Creneau.selectCreneau(journee); // Appel de la méthode pour sélectionner le créneau libre
                         if (journee.getCreneauLibre() != null) {
                             planning.addJournee(journee);
                             dayButton.setStyle("-fx-background-color: lightblue;");
@@ -142,101 +104,31 @@ public class Calendrier extends Application {
 
 
 
-
-
-    private void afficherPlanning() {
-        System.out.println("Planning :");
-    
-        for (Journee journee : planning.getJournees()) {
-            System.out.println("Journée : " + journee.getDate());
-            List<Creneau> creneaux = journee.getCreneauLibre();
-            if (creneaux.isEmpty()) {
-                System.out.println("Aucun créneau libre.");
-            } else {
-                System.out.println("Créneaux libres :");
-                for (Creneau creneau : creneaux) {
+        private void afficherPlanning() {
+            System.out.println("Planning :");
+        
+            for (Journee journee : planning.getJournees()) {
+                System.out.println("Journée : " + journee.getDate());
+                List<Creneau> creneaux = journee.getCreneauLibre();
+                if (creneaux.isEmpty()) {
+                    System.out.println("Aucun créneau libre.");
+                } else {
+                    System.out.println("Créneaux libres :");
+                    for (Creneau creneau : creneaux)
+                     {
                     System.out.println("   - De " + creneau.getHeureDebut() + " à " + creneau.getHeureFin());
+                     }
                 }
+                System.out.println();
             }
-            System.out.println();
         }
-    }
+
+ 
     
 
     
 
-    private void selectCreneau(Journee journee) {
-        Dialog<List<Creneau>> dialog = new Dialog<>();
-        dialog.setTitle("Sélectionner un créneau libre");
-        dialog.setHeaderText(null);
-        ButtonType cancelButton = new ButtonType("Terminer", ButtonData.CANCEL_CLOSE);
-        ButtonType addButton = new ButtonType("Ajouter", ButtonData.APPLY);
-        dialog.getDialogPane().getButtonTypes().addAll(addButton, cancelButton);
-    
-        GridPane gridPane = new GridPane();
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-    
-        TextField startHourField = new TextField();
-        TextField startMinuteField = new TextField();
-        TextField endHourField = new TextField();
-        TextField endMinuteField = new TextField();
-    
-        gridPane.add(new Label("Heure de début (HH:MM)"), 0, 0);
-        gridPane.add(startHourField, 1, 0);
-        gridPane.add(new Label(":"), 2, 0);
-        gridPane.add(startMinuteField, 3, 0);
-    
-        gridPane.add(new Label("Heure de fin (HH:MM)"), 0, 1);
-        gridPane.add(endHourField, 1, 1);
-        gridPane.add(new Label(":"), 2, 1);
-        gridPane.add(endMinuteField, 3, 1);
-    
-        dialog.getDialogPane().setContent(gridPane);
-    
-        dialog.setResultConverter(dialogButton -> {
-            if (dialogButton == addButton) {
-                String startHour = startHourField.getText();
-                String startMinute = startMinuteField.getText();
-                String endHour = endHourField.getText();
-                String endMinute = endMinuteField.getText();
-    
-                try {
-                    int startHourValue = Integer.parseInt(startHour);
-                    int startMinuteValue = Integer.parseInt(startMinute);
-                    int endHourValue = Integer.parseInt(endHour);
-                    int endMinuteValue = Integer.parseInt(endMinute);
-    
-                    LocalTime startTime = LocalTime.of(startHourValue, startMinuteValue);
-                    LocalTime endTime = LocalTime.of(endHourValue, endMinuteValue);
-    
-                    if (startTime.isAfter(endTime)) {
-                        showAlert("Sélection invalide", "L'heure de fin doit être ultérieure à l'heure de début.");
-                        return null;
-                    }
-    
-                    Creneau creneau = new Creneau(startTime, endTime);
-                    List<Creneau> creneaux = journee.getCreneauLibre();
-                    creneaux.add(creneau);
-                    return creneaux;
-                } catch (NumberFormatException e) {
-                    showAlert("Sélection invalide", "Veuillez entrer des valeurs numériques valides pour l'heure.");
-                    return null;
-                }
-            }
-    
-            return null;
-        });
-    
-        Optional<List<Creneau>> result = dialog.showAndWait();
-    
-        if (result.isPresent() && result.get() != null) {
-            List<Creneau> creneaux = result.get();
-            journee.setCreneauLibre(creneaux);
-            selectCreneau(journee);
-        }
-       
-    }
+  
 
 
     

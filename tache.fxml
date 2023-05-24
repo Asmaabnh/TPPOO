@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextArea?>
@@ -21,13 +22,14 @@
          </children>
       </Pane>
       <TextArea fx:id="nomtache" layoutX="29.0" layoutY="97.0" prefHeight="14.0" prefWidth="149.0" promptText="Nom" />
-      <Button fx:id="confirmer" layoutX="41.0" layoutY="336.0" mnemonicParsing="false" onAction="#ajoutertache" prefHeight="35.0" prefWidth="125.0" style="-fx-background-image: BF5B46;" text="Confirmer" />
+      <Button fx:id="confirmer" layoutX="41.0" layoutY="336.0" mnemonicParsing="false" onAction="#confirmertache" prefHeight="35.0" prefWidth="125.0" style="-fx-background-image: BF5B46;" text="Confirmer" />
       <DatePicker fx:id="datelimite" layoutX="193.0" layoutY="157.0" prefHeight="23.0" prefWidth="149.0" promptText="Date limite" />
       <ComboBox fx:id="type" editable="true" layoutX="193.0" layoutY="210.0" prefWidth="150.0" promptText="Type" />
       <ComboBox fx:id="priorite" editable="true" layoutX="29.0" layoutY="210.0" prefWidth="150.0" promptText="Priorité" />
       <TextArea fx:id="duree" layoutX="192.0" layoutY="97.0" prefHeight="32.0" prefWidth="150.0" promptText="Durée(HH:MM)" />
-      <ComboBox fx:id="categorie" editable="true" layoutX="104.0" layoutY="269.0" prefWidth="150.0" promptText="Catégorie" />
       <TextArea fx:id="heurelimite" layoutX="29.0" layoutY="150.0" prefHeight="25.0" prefWidth="150.0" promptText="Heure limite (HH:MM)" />
       <Button fx:id="terminer" layoutX="205.0" layoutY="336.0" mnemonicParsing="false" onAction="#terminertache" prefHeight="35.0" prefWidth="125.0" style="-fx-background-image: BF5B46;" text="Terminer" />
+      <TextArea fx:id="nomcategorie" layoutX="29.0" layoutY="254.0" prefHeight="14.0" prefWidth="149.0" promptText="Catégorie" />
+      <ColorPicker fx:id="couleur" layoutX="198.0" layoutY="261.0" promptText="Color catégorie" />
    </children>
 </AnchorPane>

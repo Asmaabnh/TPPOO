@@ -32,10 +32,7 @@ public class Utilisateur implements Serializable {
         this.planning = planning;
     }*/
 
-    public void planifier() {
-        // Méthode de planification
-    }
-
+  
     public String fixerPeriode() {
         // Méthode pour fixer une période
         return null;

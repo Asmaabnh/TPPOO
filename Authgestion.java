@@ -14,16 +14,19 @@ public class Authgestion {
     private static final String FichierUsers = "utilisateurs.dat";
     private static Map<String, Utilisateur> Users = new HashMap<>();
 
-    public static void Inscrire(Utilisateur utilisateur) {
+    public static boolean Inscrire(Utilisateur utilisateur) {
         chargerUtilisateurs();
         if (!pseudoExiste(utilisateur.getPseudo())) {
             Users.put(utilisateur.getPseudo(), utilisateur);
             sauvegarderUtilisateurs();
             JOptionPane.showMessageDialog(null, "BIENVENUE DANS VOTRE NOUVEAU COMPTE!");
+            return true ; 
 
 
         } else {
-            JOptionPane.showMessageDialog(null, "Le pseudo est déjà utilisé ! Choisissez un autre.");
+          
+            return false ; 
+
         }
     }
 
