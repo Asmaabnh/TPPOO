@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 public class Creneau {
     private LocalTime heureDebut;
     private LocalTime heureFin;
+    private boolean occupe ; 
 
     public Creneau(LocalTime heureDebut, LocalTime heureFin) {
         this.heureDebut = heureDebut;
@@ -116,6 +117,12 @@ public class Creneau {
             alert.setContentText(message);
             alert.showAndWait();
         }
+
+
+
+		public void setOccupe(boolean b) {
+            this.occupe = b ; 
+		}
     
         
         

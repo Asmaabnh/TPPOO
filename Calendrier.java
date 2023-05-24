@@ -99,6 +99,7 @@ public class Calendrier  {
                 row++;
             }
         }
+        
         System.out.println("---------------------------------------------------------------"); // Afficher la liste des dates sélectionnées dans le terminal
         afficherPlanning();}
 

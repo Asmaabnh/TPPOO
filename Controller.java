@@ -207,6 +207,16 @@ public class Controller {
         priorite.setItems(options);
     }
 
+    @FXML
+    private ComboBox<String> combo;
+
+    public void tachebloque(){
+        List<String> liste = Arrays.asList("true", "false" );
+        ObservableList<String> options = FXCollections.observableArrayList(liste);
+        combo.setItems(options);
+
+    }
+
  
     @FXML
     private Button planifiermanuelle;
@@ -220,7 +230,7 @@ public class Controller {
     
     @FXML
     void ajoutertache(ActionEvent event) throws IOException {
-//BOUTON QUI APPELLE CETTE METHODE 
+//BOUTON  de creneau QUI APPELLE CETTE METHODE 
     FXMLLoader loader = new FXMLLoader(getClass().getResource("tache.fxml"));
     Parent root = loader.load();
     Scene scene = new Scene(root);
@@ -234,6 +244,8 @@ public class Controller {
     // Appeler les méthodes pour initialiser les ComboBox
     tacheController.type();
    tacheController.priorite();
+   tacheController.tachebloque();
+
 
         
     }
@@ -257,11 +269,12 @@ public class Controller {
         LocalDate selectedDate = datelimite.getValue(); // Récupère la date sélectionnée dans le DatePicker 'datelimite'
         String dureeText = duree.getText(); // Récupère lA'duree'
         String selectedHeure =  heurelimite.getText(); // Récupère la valeur sélectionnée dans le Spinner 'heurelimite'
-      // Récupère les valeurs sélectionnées dans  'categorie'
         Color selectedColor = couleur.getValue();
         String nomCategorieText = nomcategorie.getText();
-
         Categorie selectedCategorie= new Categorie(nomCategorieText , selectedColor);
+        String selectedd = combo.getValue() ; 
+        boolean selected = Boolean.parseBoolean(selectedd);
+
 
         System.out.println("Priorite:" + selectedPriorite);
         System.out.println(nom);
@@ -282,20 +295,20 @@ public class Controller {
         JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
        
        if (option == 0) {
-        Simple tache = new Simple(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie, true)  ; 
+     Simple tache = new Simple(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie, true ,selected)  ; 
         System.out.println("TACHE PERIODIQUE");
           listeSimple.add(tache);
 
 
        } else if (option == 1) {
-        Simple tache = new Simple(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie, false)  ; 
+        Simple tache = new Simple(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie, false,selected)  ; 
         listeSimple.add(tache); }
        }
 
 
      else {
         if (selectedType == "Décomposable") {
-        Decomposable tache = new Decomposable(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie)  ; 
+        Decomposable tache = new Decomposable(nom, dureeText, selectedDate, selectedHeure, selectedPriorite, selectedCategorie , selected)  ; 
         listeDecomposable.add(tache);}}
 
     }
@@ -309,32 +322,41 @@ public class Controller {
     public List<Decomposable> getListeDecomposable() {
         return listeDecomposable;}
 
-    /* POUUUUR OBTENIR LES DEUX  LISTES 
-     FXMLLoader loader = new FXMLLoader(getClass().getResource("votre_fichier.fxml"));
-Parent root = loader.load();
-Controller controller = loader.getController();
-
-List<Simple> listeSimple = controller.getListeSimple();
-List<Decomposable> listeDecomposable = controller.getListeDecomposable();
- */
+    
 
 
 
   @FXML
-    public void  terminertache(ActionEvent event) {} //AVANCER A LA PAGE SUIVANTE SOIT PLANIFIER MANUELLE OU AUTOMATIQUE 
+    public void  terminertache(ActionEvent event) throws IOException {
+     //revenir A LA PAGE precedante pour lui affiche les taches dans crenau 
+/* POUUUUR OBTENIR LES DEUX  LISTES */
+     FXMLLoader loader = new FXMLLoader(getClass().getResource("crenETperiod.fxml"));
+      Parent root = loader.load();
+      Controller controller = loader.getController();
 
-
-
-
-   
-
-   
-
+     List<Simple> listeSimple = controller.getListeSimple();
+     for (Simple simple : listeSimple) {
+        System.out.println("Nom: " + simple.getNom());
+        System.out.println("Duree: " + simple.getDuree());
+        System.out.println("Date de fin: " + simple.getHeureFin());
+        System.out.println("Heure de fin: " + simple.getHeureFin());
+        System.out.println("Priorite: " + simple.getPriorite());
+        System.out.println("Categorie: " + simple.getCategorie());
+        System.out.println("Periodique: " + simple.isPeriodique());
+        System.out.println("Bloque: " + simple.isBloque());
+        System.out.println();
+    }
+      List<Decomposable> listeDecomposable = controller.getListeDecomposable();
  
-   
+
+    }
+
+
+
 
    
 
+   
 
   @FXML
     void Calendrier(ActionEvent event) throws IOException {
