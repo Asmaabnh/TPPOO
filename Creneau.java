@@ -5,6 +5,10 @@ public class Creneau {
     private LocalTime heureFin;
     private boolean occupé;
     private boolean bloqué;
+    private static LocalTime creneauMin ; // Déclaration en tant que membre static
+    
+ 
+
     public Creneau(LocalTime heureDebut, LocalTime heureFin) {
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
@@ -22,6 +26,16 @@ public class Creneau {
             return heureFin;
         }
         
+
+        
+    public static LocalTime getCreneauMin() {
+        return creneauMin;
+    }
+    
+    public static void setCreneauMin(LocalTime creneauMin) {
+        Creneau.creneauMin = creneauMin;
+    }
+
         // Autres méthodes de la classe
     }
     
