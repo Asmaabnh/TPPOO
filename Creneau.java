@@ -3,19 +3,26 @@ import java.time.LocalTime;
 public class Creneau {
     private LocalTime heureDebut;
     private LocalTime heureFin;
-    private Tache tache;
 
     public Creneau(LocalTime heureDebut, LocalTime heureFin) {
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
     }
 
-    public void setTache(Tache tache) {
-        this.tache = tache;
+   
+        
+        // Autres attributs et méthodes de la classe
+        
+        public LocalTime getHeureDebut() {
+            return heureDebut;
+        }
+        
+        public LocalTime getHeureFin() {
+            return heureFin;
+        }
+        
+        // Autres méthodes de la classe
     }
+    
 
-    public Tache getTache() {
-        return tache;
-    }
 
-}
